@@ -1,0 +1,31 @@
+- name: get initial password
+      command: cat /var/lib/jenkins/secrets/initialAdminPassword
+      register: jenkins_initial_password
+- name: print service status
+      debug:
+        msg: 
+          - "Initial password: {{jenkins_initial_password.stdout}}"
+New
+2:51
+pipeline {
+    
+    agent any
+    stages {
+        stage('build') {
+            steps {
+               echo 'building the app'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'testing the app'
+            }
+        }
+         stage('deploy') {
+            
+            steps {
+                echo 'deploying the app'
+            }
+        }
+    }
+}
